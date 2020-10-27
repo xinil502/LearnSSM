@@ -27,4 +27,11 @@ public interface IUserMapper {
      * @return
      */
     List<User> findByUClass(String uclass);
+
+    /**
+     * 添加一个用户
+     * @param user
+     * @return
+     */
+    int addUser(User user);
 }

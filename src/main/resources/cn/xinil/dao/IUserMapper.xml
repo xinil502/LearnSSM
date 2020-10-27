@@ -15,7 +15,11 @@
         SELECT * FROM webtest.user WHERE id = #{id}
     </select>
 
-    <select id="findByUClass" resultType="cn.xinil.domain.User">
+    <select id="findByUClass" parameterType="int" resultType="cn.xinil.domain.User">
         SELECT * FROM webtest.user WHERE uclass = #{uclass}
     </select>
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="cn.xinil.domain.User">
+        INSERT INTO webtest.user(uid, uname, uage, ugender, uaddress, uclass) VALUES(#{uid}, #{uname}, #{uage}, #{ugender}, #{uaddress}, #{uclass})
+    </insert>
 </mapper>
