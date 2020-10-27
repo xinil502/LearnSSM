@@ -33,4 +33,8 @@
     <delete id="deleteUser" parameterType="int">
         DELETE FROM webtest.user WHERE id = #{id}
     </delete>
+
+    <select id="findUserLike" parameterType="java.lang.String" resultType="cn.xinil.domain.User">
+        SELECT * FROM webtest.user WHERE uname LIKE #{value}
+    </select>
 </mapper>

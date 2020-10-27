@@ -48,4 +48,10 @@ public interface IUserMapper {
      * @return
      */
     int deleteUser(int id);
+
+    /**
+     * 模糊查询用户数据
+     * @return
+     */
+    List<User> findUserLike(String value);
 }
