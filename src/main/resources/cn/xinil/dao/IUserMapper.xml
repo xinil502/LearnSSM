@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.xinil.dao.IUserMapper">   <!--namespace必须为接口的全类名-->
+
+    <!--查找所有用户-->
+    <select id="findAll" resultType="cn.xinil.domain.User">   <!--id必须为namespace接口的方法名-->
+        SELECT * FROM webtest.user
+    </select>
+
+    <!--根据Id查找单个用户-->
+    <select id="findById" resultType="cn.xinil.domain.User">
+        SELECT * FROM webtest.user WHERE id = #{id}
+    </select>
+</mapper>
