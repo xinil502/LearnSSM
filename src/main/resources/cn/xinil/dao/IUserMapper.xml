@@ -14,4 +14,8 @@
     <select id="findById" resultType="cn.xinil.domain.User">
         SELECT * FROM webtest.user WHERE id = #{id}
     </select>
+
+    <select id="findByUClass" resultType="cn.xinil.domain.User">
+        SELECT * FROM webtest.user WHERE uclass = #{uclass}
+    </select>
 </mapper>

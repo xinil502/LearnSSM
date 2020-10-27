@@ -20,4 +20,11 @@ public interface IUserMapper {
      * @return
      */
     User findById(int id);
+
+    /**
+     * 通过班级查找学生
+     * @param uclass
+     * @return
+     */
+    List<User> findByUClass(String uclass);
 }
