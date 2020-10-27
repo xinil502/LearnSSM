@@ -7,15 +7,14 @@ import javax.annotation.Resource;
 import java.io.InputStream;
 
 public class SqlSessionUtil { //SqlSession工具类
-    private static SqlSession session;
+    private static SqlSessionFactory factory;
     static{
         InputStream is = Resource.class.getResourceAsStream("/SqlMapConfig.xml");
 
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(is);
-        session = factory.openSession();
+        factory = builder.build(is);
     }
     public static SqlSession getSqlSession(){
-        return session;
+        return factory.openSession();
     }
 }
