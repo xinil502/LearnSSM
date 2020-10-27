@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class MybatisTest_4 {//修改用户数据
     @Test
-    public static void test_4(){
+    public void test_4(){
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
 
         User user = sqlSession.getMapper(IUserMapper.class).findById(4);
