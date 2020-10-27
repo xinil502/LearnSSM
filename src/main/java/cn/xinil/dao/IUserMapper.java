@@ -34,4 +34,18 @@ public interface IUserMapper {
      * @return
      */
     int addUser(User user);
+
+    /**
+     * 修改用户的信息
+     * @param user
+     * @return
+     */
+    int updateUser(User user);
+
+    /**
+     * 删除一个用户
+     * @param id
+     * @return
+     */
+    int deleteUser(int id);
 }

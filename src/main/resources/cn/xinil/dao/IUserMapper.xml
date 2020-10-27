@@ -20,6 +20,17 @@
     </select>
 
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="cn.xinil.domain.User">
-        INSERT INTO webtest.user(uid, uname, uage, ugender, uaddress, uclass) VALUES(#{uid}, #{uname}, #{uage}, #{ugender}, #{uaddress}, #{uclass})
+        INSERT INTO webtest.user(uid, uname, uage, ugender, uaddress, uclass)
+        VALUES(#{uid}, #{uname}, #{uage}, #{ugender}, #{uaddress}, #{uclass})
     </insert>
+
+    <update id="updateUser" parameterType="cn.xinil.domain.User">
+        UPDATE webtest.user SET uid=#{uid},uname=#{uname},uage=#{uage},
+                                ugender=#{ugender},uaddress=#{uaddress},
+                                uclass=#{uclass} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM webtest.user WHERE id = #{id}
+    </delete>
 </mapper>
