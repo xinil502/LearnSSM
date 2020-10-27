@@ -4,9 +4,12 @@ import cn.xinil.dao.IUserMapper;
 import cn.xinil.domain.User;
 import cn.xinil.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
 
 public class MybatisTest_3 { //添加用户数据
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
 
         IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);

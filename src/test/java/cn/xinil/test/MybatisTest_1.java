@@ -5,13 +5,15 @@ import cn.xinil.domain.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
 
 import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.List;
 
 public class MybatisTest_1 {
-    public static void main(String[] args) throws Exception{
+    @Test
+    public void test() throws Exception{
         //1.读取配置文件
         InputStream inputStream = Resource.class.getResourceAsStream("/SqlMapConfig.xml");
 

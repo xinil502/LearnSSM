@@ -4,9 +4,11 @@ import cn.xinil.dao.IUserMapper;
 import cn.xinil.domain.User;
 import cn.xinil.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
 
 public class MybatisTest_4 {//修改用户数据
-    public static void main(String[] args) {
+    @Test
+    public static void test_4(){
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
 
         User user = sqlSession.getMapper(IUserMapper.class).findById(4);

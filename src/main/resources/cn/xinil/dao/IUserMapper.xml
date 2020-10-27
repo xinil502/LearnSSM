@@ -15,7 +15,7 @@
         SELECT * FROM webtest.user WHERE id = #{id}
     </select>
 
-    <select id="findByUClass" parameterType="int" resultType="cn.xinil.domain.User">
+    <select id="findByUClass" parameterType="java.lang.String" resultType="cn.xinil.domain.User">
         SELECT * FROM webtest.user WHERE uclass = #{uclass}
     </select>
 
