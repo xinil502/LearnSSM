@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.xinil.dao.IStudentMapper">   <!--namespace必须为接口的全类名-->
+
+
+    <!--    先查老师，再查学生
+            因为老师是一个单独的字段，所以单独处理。
+    -->
+    <select id="findStudet"  resultMap="StudentTeacher">
+        SELECT * FROM webtest.student
+    </select>
+    <!--    id代表它的表示， type表示哪种类作为其映射类-->
+    <resultMap id="StudentTeacher" type="student">
+        <!--        主键一般用id 属性用result-->
+        <!--        property：属性名  column：字段id  -->
+        <result property="sssid" column="id"></result>
+        <result property="name" column="name"></result>
+        <!--        复杂的属性，，需要单独处理
+                    对象使用 association
+                    集合使用 collection   -->
+        <!--        javaType：字段类型    select嵌套查询-->
+        <association property="teacher" column="tid" javaType="teacher" select="getTeacher"/>
+    </resultMap>
+    <select id="getTeacher" resultType="Teacher">
+        SELECT * FROM webtest.teacher WHERE tid = #{tid}
+    </select>
+</mapper>
