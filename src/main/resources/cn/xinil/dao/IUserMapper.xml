@@ -6,25 +6,25 @@
 <mapper namespace="cn.xinil.dao.IUserMapper">   <!--namespace必须为接口的全类名-->
 
     <!--查找所有用户-->
-    <select id="findAll" resultType="cn.xinil.domain.User">   <!--id必须为namespace接口的方法名-->
+    <select id="findAll" resultType="user">   <!--id必须为namespace接口的方法名-->
         SELECT * FROM webtest.user
     </select>
 
     <!--根据Id查找单个用户-->
-    <select id="findById" resultType="cn.xinil.domain.User">
+    <select id="findById" resultType="user">
         SELECT * FROM webtest.user WHERE id = #{id}
     </select>
 
-    <select id="findByUClass" parameterType="java.lang.String" resultType="cn.xinil.domain.User">
+    <select id="findByUClass" parameterType="java.lang.String" resultType="user">
         SELECT * FROM webtest.user WHERE uclass = #{uclass}
     </select>
 
-    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="cn.xinil.domain.User">
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="user">
         INSERT INTO webtest.user(uid, uname, uage, ugender, uaddress, uclass)
         VALUES(#{uid}, #{uname}, #{uage}, #{ugender}, #{uaddress}, #{uclass})
     </insert>
 
-    <update id="updateUser" parameterType="cn.xinil.domain.User">
+    <update id="updateUser" parameterType="user">
         UPDATE webtest.user SET uid=#{uid},uname=#{uname},uage=#{uage},
                                 ugender=#{ugender},uaddress=#{uaddress},
                                 uclass=#{uclass} WHERE id=#{id}
@@ -34,7 +34,11 @@
         DELETE FROM webtest.user WHERE id = #{id}
     </delete>
 
-    <select id="findUserLike" parameterType="java.lang.String" resultType="cn.xinil.domain.User">
+    <select id="findUserLike" parameterType="java.lang.String" resultType="user">
         SELECT * FROM webtest.user WHERE uname LIKE #{value}
+    </select>
+
+    <select id="getUserLimit" parameterType="map" resultType="user">
+        SELECT * FROM webtest.user ORDER BY uid LIMIT #{startIndex}, #{pageSize}
     </select>
 </mapper>

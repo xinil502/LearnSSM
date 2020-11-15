@@ -5,30 +5,40 @@
 
 <!-- Mybatis的主配置文件 -->
 <configuration>
-    <properties resource="db.properties"></properties>
+    <!--引入外部配置文件-->
+    <properties resource="db.properties"/>
 
+    <settings>
+        <!--标准的日志设置-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>  -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+<!--    自动生成别名-->
+    <typeAliases>
+        <package name="cn.xinil.domain"/>
+    </typeAliases>
     <!-- 配置环境 -->
     <environments default="mysql_1"> <!-- 自定义名称 -->
         <environment id="mysql_1"> <!-- 配置mysql_1的环境 -->
-            <transactionManager type="JDBC"></transactionManager> <!-- 配置事务类型 -->
+            <transactionManager type="JDBC"/> <!-- 配置事务类型 -->
             <dataSource type="POOLED">  <!-- 配置数据源(连接池) -->
 
                 <!-- 配置连接数据库的四个信息 -->
-                <property name="driver" value="${jdbc.driver}"></property>
-                <property name="url" value="${jdbc.url}"></property>
-                <property name="username" value="${jdbc.username}"></property>
-                <property name="password" value="${jdbc.password}"></property>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
-
-    <!--
-    加载映射文件
+<!--    加载映射文件()-->
     <mappers>
         <mapper class="cn.xinil.dao.IUserMapper"></mapper>
+        <mapper class="cn.xinil.dao.ITeacherMapper"></mapper>
+        <mapper class="cn.xinil.dao.IStudentMapper"></mapper>
     </mappers>
-    -->
-    <mappers>
-        <mapper resource="cn/xinil/dao/IUserMapper.xml"></mapper>
-    </mappers>
+<!--    <mappers>-->
+<!--        <mapper resource="cn/xinil/dao/*Mapper.xml"/>-->
+<!--    </mappers>-->
 </configuration>

@@ -20,5 +20,7 @@ public class MybatisTest_6 {
         for(Iterator<User> ite = list.iterator(); ite.hasNext();){
             System.out.println(ite.next());
         }
+
+        sqlSession.close();
     }
 }

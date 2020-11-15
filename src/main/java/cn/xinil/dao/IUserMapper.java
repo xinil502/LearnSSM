@@ -1,7 +1,10 @@
 package cn.xinil.dao;
 
 import cn.xinil.domain.User;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户的持久层接口
@@ -54,4 +57,11 @@ public interface IUserMapper {
      * @return
      */
     List<User> findUserLike(String value);
+
+    /**
+     * 进行分页查询
+     * @param map
+     * @return
+     */
+    List<User> getUserLimit(Map<String,Object> map);
 }
