@@ -11,4 +11,11 @@ public interface IBlogMapper {
     //使用if查询博客
     List<Blog> findBlogUseIf(@Param("author") String writer,
                              @Param("title") String t);
+
+    List<Blog> findBlogUseChoose(@Param("author") String writer,
+                                 @Param("title") String t);
+
+    int updateBlogUseSet(@Param("id") int id,
+                         @Param("title") String title,
+                         @Param("views") int views);
 }
