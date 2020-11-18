@@ -12,6 +12,8 @@
         <!--标准的日志设置-->
 <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>  -->
         <setting name="logImpl" value="LOG4J"/>
+<!--        下划线变驼峰原则-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
     </settings>
 
 <!--    自动生成别名-->
@@ -37,6 +39,7 @@
         <mapper class="cn.xinil.dao.IUserMapper"></mapper>
         <mapper class="cn.xinil.dao.ITeacherMapper"></mapper>
         <mapper class="cn.xinil.dao.IStudentMapper"></mapper>
+        <mapper class="cn.xinil.dao.IBlogMapper"></mapper>
     </mappers>
 <!--    <mappers>-->
 <!--        <mapper resource="cn/xinil/dao/*Mapper.xml"/>-->

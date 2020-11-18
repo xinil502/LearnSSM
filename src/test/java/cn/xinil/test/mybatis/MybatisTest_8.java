@@ -1,4 +1,4 @@
-package cn.xinil.test;
+package cn.xinil.test.mybatis;
 
 import cn.xinil.dao.IStudentMapper;
 import cn.xinil.dao.ITeacherMapper;

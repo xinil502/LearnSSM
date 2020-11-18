@@ -4,7 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.xinil.dao.ITeacherMapper">   <!--namespace必须为接口的全类名-->
-<!--    <select id="findAllTeacher" parameterType="_int" resultType="teacher">-->
-<!--        SELECT * FROM webtest.teacher-->
-<!--    </select>-->
+    <select id="findTeacher" resultMap="TeacherStudent">
+        SELECT t.tid as tttid,
+               t.name as tttname,
+               s.id as sid,
+               s.name as snam
+        FROM webtest.teacher as t,
+             webtest.student as s
+        WHERE s.tid = t.tid
+    </select>
+
+    <resultMap id="TeacherStudent" type="teacher">
+        <id property="tid" column="tttid"/>
+        <result property="name" column="tttname"/>
+        <collection property="students" column="tid" ofType="student">
+            <result property="sssid" column="sid"/>
+            <result property="name" column="snam"/>
+            <result property="tid" column="tttid"/>
+        </collection>
+    </resultMap>
 </mapper>

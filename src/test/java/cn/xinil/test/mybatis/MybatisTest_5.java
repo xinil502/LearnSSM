@@ -1,4 +1,4 @@
-package cn.xinil.test;
+package cn.xinil.test.mybatis;
 
 import cn.xinil.dao.IUserMapper;
 import cn.xinil.utils.SqlSessionUtil;

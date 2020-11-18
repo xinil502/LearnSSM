@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ITeacherMapper {
 
-//    List<Teacher> findAllTeacher(@Param(value = "tid") int id);
+    List<Teacher> findTeacher();
 }

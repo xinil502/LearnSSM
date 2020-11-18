@@ -12,5 +12,6 @@ public class Student {
     private String name;
 
     //外键
-    private Teacher teacher;
+//    private Teacher teacher;
+    private int tid;
 }
