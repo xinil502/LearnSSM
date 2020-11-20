@@ -3,14 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.xinil.dao.IBlogMapper">   <!--namespace必须为接口的全类名-->
 
-    <insert id="addBlog" parameterType="blog">
+<mapper namespace="cn.xinil.dao.IBlogMapper">
+<!--    创建一个FIFO缓存，
+        每隔60秒刷新一次，
+        最多可以存储结果对象或列表的512个引用，
+        而且被返回的对象是只读的-->
+    <cache eviction="FIFO"
+           flushInterval="600000"
+           size="512"
+           readOnly="true"
+    />
+    <insert id="addBlog" parameterType="blog" >
         INSERT INTO webtest.blog(id, title, author, create_time, views)
         VALUES(#{id}, #{title}, #{author}, #{createTime}, #{views})
     </insert>
 
-    <select id="findBlogUseIf" resultType="blog">
+    <select id="findBlogUseIf" resultType="blog" useCache="true">
         SELECT *
         FROM webtest.blog
         WHERE 1 = 1
@@ -49,4 +58,19 @@
         </set>
         WHERE id = #{id}
     </update>
+
+    <select id="findBlogUseForeachById" resultType="blog">
+        SELECT * FROM webtest.blog
+<!--        <where>-->
+<!--            <foreach item="id" index="index" collection="ids"-->
+<!--                     open="" separator="or" close="">-->
+<!--                id = #{id}-->
+<!--            </foreach>-->
+<!--        </where>-->
+        WHERE id in
+        <foreach item="id" index="index" collection="ids"
+            open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

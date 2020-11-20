@@ -18,4 +18,6 @@ public interface IBlogMapper {
     int updateBlogUseSet(@Param("id") int id,
                          @Param("title") String title,
                          @Param("views") int views);
+
+    List<Blog> findBlogUseForeachById(@Param("ids") List<Integer> list);
 }

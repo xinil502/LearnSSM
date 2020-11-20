@@ -14,6 +14,8 @@
         <setting name="logImpl" value="LOG4J"/>
 <!--        下划线变驼峰原则-->
 <!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+<!--        是否开启缓存配置(默认是开启)-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
 <!--    自动生成别名-->
@@ -36,11 +38,14 @@
     </environments>
 <!--    加载映射文件()-->
     <mappers>
-        <mapper class="cn.xinil.dao.IUserMapper"></mapper>
-        <mapper class="cn.xinil.dao.ITeacherMapper"></mapper>
-        <mapper class="cn.xinil.dao.IStudentMapper"></mapper>
-        <mapper class="cn.xinil.dao.IBlogMapper"></mapper>
+        <package name="cn.xinil.dao"/>
     </mappers>
+<!--    <mappers>-->
+<!--        <mapper class="cn.xinil.dao.IUserMapper"></mapper>-->
+<!--        <mapper class="cn.xinil.dao.ITeacherMapper"></mapper>-->
+<!--        <mapper class="cn.xinil.dao.IStudentMapper"></mapper>-->
+<!--        <mapper class="cn.xinil.dao.IBlogMapper"></mapper>-->
+<!--    </mappers>-->
 <!--    <mappers>-->
 <!--        <mapper resource="cn/xinil/dao/*Mapper.xml"/>-->
 <!--    </mappers>-->
