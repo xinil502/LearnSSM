@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="bean1.xml"/>
+    <import resource="bean2.xml"/>
+
+
+    <!--   使用Spring来创建对象，Spring来设置对象的值
+        bean == 对象 == new 类型()
+        bean
+            id：设置变量名
+            class：new 的对象
+            property：给对象中的属性设置一个值，
+-->
+    <bean id="user2" class="cn.xinil.domain.User" name="u2,U2,user_2,User_2">
+        <property name="id" value="70"/>
+        <property name="uid" value="77"/>
+        <property name="uname" value="1"/>
+        <property name="uaddress" value="1"/>
+        <property name="uage" value="1"/>
+        <property name="uclass" value="1"/>
+        <property name="ugender" value="1"/>
+    </bean>
+
+    <bean id="springMapperImpl1" class="cn.xinil.dao.Impl.SpringMapperImpl_1"/>
+    <bean id="springMapperImpl2" class="cn.xinil.dao.Impl.SpringMapperImpl_2"/>
+    <bean id="springMapperImpl3" class="cn.xinil.dao.Impl.SpringMapperImpl_3"/>
+    <!--        value：具体的值，基本数据类型。
+              ref:：引用Spring容器中创建好的对象。-->
+    <bean id="springService" class="cn.xinil.service.impl.SpringServiceImpl">
+        <property name="springMapper"
+                  ref="springMapperImpl1"/>
+<!--              ref="springMapperImpl2"/>    -->
+<!--              ref="springMapperImpl3"/>    -->
+    </bean>
+
+    <alias name="springMapperImpl1" alias="sm1"/>
+    <alias name="springMapperImpl2" alias="sm2"/>
+    <alias name="springMapperImpl3" alias="sm3"/>
+    <alias name="springService" alias="ss"/>
+
+    <bean id="address" class="cn.xinil.domain.Address">
+        <property name="address" value="西安市长安区"/>
+    </bean>
+    <bean id="student" class="cn.xinil.domain.Student">
+<!--        普通的value注入-->
+        <property name="name" value="rjw"/>
+<!--        bean注入，ref-->
+        <property name="address" ref="address"/>
+<!--        空注入-->
+        <property name="wife">
+            <null/>
+        </property>
+<!--        数组注入-->
+        <property name="books">
+            <array value-type="java.lang.String">
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>三国演义</value>
+                <value>水浒传</value>
+            </array>
+        </property>
+<!--        List注入-->
+        <property name="hobbies">
+            <list>
+                <value>敲代码</value>
+                <value>听歌</value>
+                <value>逛b站</value>
+            </list>
+        </property>
+<!--        set注入-->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>COC</value>
+                <value>IDEA</value>
+            </set>
+        </property>
+<!--        Map注入-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="610123455412341234"/>
+                <entry key="学生证" value="04193070"/>
+                <entry key="理发店会员卡" value="15378970308"/>
+            </map>
+        </property>
+<!--        properties注入-->
+        <property name="info">
+            <props>
+                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+                <prop key="url">jdbc:mysql://localhost:3306</prop>
+                <prop key="username">root</prop>
+                <prop key="password">root</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="address2" class="cn.xinil.domain.Address" p:address="陕西西安"/>
+</beans>
