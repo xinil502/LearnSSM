@@ -4,13 +4,13 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <import resource="bean1.xml"/>
-    <import resource="bean2.xml"/>
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <!--   使用Spring来创建对象，Spring来设置对象的值
@@ -108,5 +108,34 @@
     <bean id="cat" class="cn.xinil.domain.Cat"/>
     <bean id="dog" class="cn.xinil.domain.Dog"/>
     <bean id="people" class="cn.xinil.domain.People"/>
+
+<!--    注册Bean-->
+    <bean id="userService" class="cn.xinil.test.aop_1.UserServiceImpl"/>
+    <bean id="beforeLog" class="cn.xinil.test.aop_1.BeforeLog"/>
+    <bean id="afterLog" class="cn.xinil.test.aop_1.AfterLog"/>
+
+<!--&lt;!&ndash;    方式一：使用原生Spring API接口&ndash;&gt;-->
+<!--&lt;!&ndash;    配置AOP:需要导入AOP的约束&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--&lt;!&ndash;    选择切入点：需要在哪里执行Spring: 表达式execution(要执行的位置！ 修饰词 返回值 类名 方法名 参数)&ndash;&gt;-->
+<!--        <aop:pointcut id="point" expression="execution(* cn.xinil.test.aop_1.UserServiceImpl.*(..))"/>-->
+<!--&lt;!&ndash;    执行环绕增加&ndash;&gt;-->
+<!--        <aop:advisor advice-ref="beforeLog" pointcut-ref="point"/>-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="point"/>-->
+<!--    </aop:config>-->
+
+<!--    方式二：使用自定义类-->
+    <bean id="myPointCut" class="cn.xinil.test.aop_2.MyPointCut"/>
+    <aop:config>
+<!--        选择切面， ref = 引用的类-->
+        <aop:aspect ref="myPointCut">
+<!--            切入点-->
+            <aop:pointcut id="point" expression="execution(* cn.xinil.test.aop_1.UserServiceImpl.*(..))"/>
+<!--            应用通知-->
+            <aop:before method="before" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+        </aop:aspect>
+    </aop:config>
 
 </beans>

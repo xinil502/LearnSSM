@@ -6,8 +6,12 @@ import cn.xinil.domain.People;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class PeopleConfig {
+
+    public PeopleConfig() {
+        System.out.println("初始化进行中。");
+    }
 
     @Bean
     public People people_1(){
