@@ -1,15 +1,16 @@
 package cn.xinil.test.spring;
 
-import cn.xinil.test.aop_1.IUserService;
+import cn.xinil.test.aop_3.AnnotationPointCut;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SpringTest_5 {
+public class SpringTest_6 {
+
     @Test
-    public void test_5(){
+    public void test_6(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        IUserService userService = (IUserService) context.getBean("userService");
-        System.out.println(userService.update());
+        AnnotationPointCut pointCut = (AnnotationPointCut)context.getBean("annotationPointCut");
+
     }
 }

@@ -15,7 +15,7 @@
 <!--        <setting name="logImpl" value="LOG4J2"/>-->
 <!--        下划线变驼峰原则-->
 <!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
-<!--        是否开启缓存配置(默认是开启)-->
+<!--        是否开启缓存配置(默认是开启)，可以显式声明-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
 

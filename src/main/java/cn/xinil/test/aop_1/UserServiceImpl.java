@@ -1,5 +1,7 @@
 package cn.xinil.test.aop_1;
 
+import org.aspectj.lang.annotation.Pointcut;
+
 public class UserServiceImpl implements IUserService {
     @Override
     public int insert() {
@@ -8,6 +10,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @Pointcut
     public int delete() {
         System.out.println("删除了一个用户");
         return 2;
